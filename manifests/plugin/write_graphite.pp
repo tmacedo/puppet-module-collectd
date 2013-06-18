@@ -11,7 +11,7 @@ define collectd::plugin::write_graphite (
   $graphitename = regsubst($name, '(\.)', '_', 'G')
 
   file { "write_graphite_${graphitename}.conf":
-    ensure    => $collectd::plugin::write_graphite::ensure,
+    ensure    => $ensure,
     path      => "${conf_dir}/write_graphite_${graphitename}.conf",
     mode      => '0644',
     owner     => 'root',

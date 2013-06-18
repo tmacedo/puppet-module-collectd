@@ -21,7 +21,7 @@ define collectd::plugin::librato (
   }
 
   file { "librato_${emailname}.conf":
-    ensure    => $collectd::plugin::write_graphite::ensure,
+    ensure    => $ensure,
     path      => "${conf_dir}/librato_${emailname}.conf",
     mode      => '0644',
     owner     => 'root',
