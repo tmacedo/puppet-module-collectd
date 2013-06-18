@@ -13,9 +13,11 @@ define collectd::plugin::librato (
     fail('need to define apitoken in collectd::plugin::librato')
   }
 
-  exec { '/usr/bin/wget -O /usr/lib/collectd/collectd-librato.py https://github.com/librato/collectd-librato/raw/master/lib/collectd-librato.py':
+  exec { 'download collectd-librato':
+    command => '/usr/bin/wget -O /usr/lib/collectd/collectd-librato.py https://github.com/librato/collectd-librato/raw/master/lib/collectd-librato.py',
     creates => '/usr/lib/collectd/collectd-librato.py',
-    require => Package[$collectd::params::package]
+    require => Package[$collectd::params::package],
+    notify  => Service['collectd']
   }
 
   file { "librato_${emailname}.conf":
@@ -26,6 +28,7 @@ define collectd::plugin::librato (
     group     => 'root',
     content   => template('collectd/librato.conf.erb'),
     notify    => Service['collectd'],
+    require   => Exec['download collectd-librato']
   }
 
 }
