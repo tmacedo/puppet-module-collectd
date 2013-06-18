@@ -6,8 +6,16 @@ class collectd(
   $purge        = undef,
   $recurse      = undef,
   $purge_config = false,
+  $version      = undef
 ) {
+
+  if $version != undef {
+    validate_re($version, '^\d$', 'the version paramater of collectd is not an integer')
+  }
+
   include collectd::params
+
+  include collectd::repo
 
   $plugin_conf_dir = $collectd::params::plugin_conf_dir
 
@@ -16,6 +24,7 @@ class collectd(
     name     => $collectd::params::package,
     provider => $collectd::params::provider,
     before   => File['collectd.conf', 'collectd.d'],
+    require  => Class['collectd::repo']
   }
 
   file { 'collectd.d':
