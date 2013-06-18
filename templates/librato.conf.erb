@@ -1,0 +1,15 @@
+<LoadPlugin "python">
+    Globals true
+</LoadPlugin>
+
+<Plugin "python">
+    ModulePath "/usr/lib/collectd"
+
+    Import "collectd-librato"
+     
+    <Module "collectd-librato">
+        MetricPrefix "<%= @prefix %>"
+        APIToken "<%= @apitoken %>"
+        Email    "<%= @email %>"
+    </Module>
+</Plugin>
