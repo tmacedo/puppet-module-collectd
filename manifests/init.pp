@@ -35,6 +35,8 @@ class collectd(
     group   => 'root',
     purge   => $purge,
     recurse => $recurse,
+    require => Package['collectd'],
+    notify  => Service['collectd']
   }
 
   $conf_content = $purge_config ? {
