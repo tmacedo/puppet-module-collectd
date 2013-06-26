@@ -6,15 +6,15 @@ LoadPlugin mysql
     Host "<%= @host %>"
     User "<%= @username %>"
     Password "<%= @password %>"
-    Port 3306
-    # Since version 5.0:
-    #Port "3306"
+    Port "<%= @port %>"
+    <% if @masterstats == true -%>
     MasterStats true
+    <% end -%>
+    <% if @slavestats == true -%>
+    SlaveStats true
+    <% end -%>
+    <% if @slavenotifications == true -%>
+    SlaveNotifications true
+    <% end -%>
   </Database>
-#  <Database "bar">
-#    Host "localhost"
-#    Socket "/var/run/mysql/mysqld.sock"
-#    SlaveStats true
-#    SlaveNotifications true
-#  </Database>
 </Plugin>

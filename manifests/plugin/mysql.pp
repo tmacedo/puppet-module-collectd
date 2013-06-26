@@ -1,10 +1,13 @@
 class collectd::plugin::mysql (
-  $database = 'UNSET',
-  $host     = 'UNSET',
-  $username = 'UNSET',
-  $password = 'UNSET',
-  $port     = '3306',
-  $ensure   = present
+  $database           = 'UNSET',
+  $host               = 'UNSET',
+  $username           = 'UNSET',
+  $password           = 'UNSET',
+  $port               = '3306',
+  $masterstats        = false,
+  $slavestats         = false,
+  $slavenotifications = false,
+  $ensure             = present
 ) {
   include collectd::params
 
