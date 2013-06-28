@@ -1,0 +1,14 @@
+LoadPlugin tail
+<Plugin tail>
+  <File "<%= @file %>">
+  Instance "<%= @name %>"
+<% @match.each do |match| -%>
+    <Match>
+      Regex "<%= match['regex'] -%>"
+      DSType "<%= match['dstype'] -%>"
+      Type <%= match['type'] %>
+      Instance "<%= match['name'] -%>"
+    </Match>
+<% end -%>
+  </File>
+</Plugin>
