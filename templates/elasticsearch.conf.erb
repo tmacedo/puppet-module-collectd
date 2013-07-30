@@ -1,0 +1,14 @@
+<LoadPlugin "python">
+    Globals true
+</LoadPlugin>
+
+<Plugin "python">
+    ModulePath "/usr/lib/collectd"
+
+    Import "elasticsearch"
+
+    <Module "elasticsearch">
+        Verbose <%= @verbose %>
+        Cluster "<%= @cluster %>"
+    </Module>
+</Plugin>
