@@ -1,6 +1,5 @@
+LoadPlugin memcached
 <Plugin "memcached">
-  <Instance "<%= @hostname %>">
-    Host "<%= @hostname %>"
-    Port <%= @port %>
-  </Instance>
+  Host "<%= @hostname %>"
+  Port <%= @port %>
 </Plugin>
