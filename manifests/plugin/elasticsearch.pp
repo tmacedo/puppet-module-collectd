@@ -1,6 +1,7 @@
 define collectd::plugin::elasticsearch (
   $verbose = 'false',
-  $ensure = present
+  $version = '1.0',
+  $ensure  = present
 ) {
   include collectd::params
 
