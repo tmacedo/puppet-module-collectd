@@ -1,6 +1,7 @@
 define collectd::plugin::write_graphite (
   $storerates   = false,
   $graphiteport = '2003',
+  $protocol     = 'tcp',
   $ensure       = present,
   $prefix       = 'collectd.'
 ) {
