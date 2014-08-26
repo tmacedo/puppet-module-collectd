@@ -1,0 +1,11 @@
+<LoadPlugin "python">
+    Globals true
+</LoadPlugin>
+
+<Plugin "python">
+    ModulePath="/usr/lib/collectd"
+    Import "rabbitmq_info"
+    <Module "rabbitmq_info">
+       Vhost "<%= @name %>"
+    </Module>
+</Plugin>
